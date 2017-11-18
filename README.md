@@ -1,5 +1,13 @@
 # cassandra
 
+sudo su -
+
+sudo apt-get update
+
+sudo apt-get install git-core -y
+
+git clone https://github.com/balajigan/cassandra.git
+
 ## Step1: Instal JDK:
 
 sudo apt-get install -y openjdk-8-jdk
