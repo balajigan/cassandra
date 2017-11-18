@@ -11,5 +11,6 @@ cd /opt/cassandra
 curl -O -k http://apache.claz.org/cassandra/3.11.1/apache-cassandra-3.11.1-bin.tar.gz
 tar -xvzf apache-cassandra-3.11.1-bin.tar.gz
 # start cassandra
-apache-cassandra-3.11.1/bin/cassandra -R
+apache-cassandra-3.11.1/bin/cassandra -R &
+
 
