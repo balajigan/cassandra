@@ -28,3 +28,13 @@ tar -xvzf apache-cassandra-3.11.1-bin.tar.gz
 
 apache-cassandra-3.11.1/bin/cassandra -R &
 
+### use this for installing through the scripts
+sudo su -
+
+sudo apt-get update
+
+sudo apt-get install -y git-core
+
+git clone https://github.com/balajigan/cassandra.git
+
+cassandra/install.sh
