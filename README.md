@@ -8,7 +8,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
 
-## Step2: Install Cassandra
+## Step2: Install Cassandra & Start cassandra
 
 cd /opt
 
@@ -20,3 +20,4 @@ curl -O -k http://apache.claz.org/cassandra/3.11.1/apache-cassandra-3.11.1-bin.t
 
 tar -xvzf apache-cassandra-3.11.1-bin.tar.gz
 
+bin/cassandra -R
