@@ -20,4 +20,4 @@ curl -O -k http://apache.claz.org/cassandra/3.11.1/apache-cassandra-3.11.1-bin.t
 
 tar -xvzf apache-cassandra-3.11.1-bin.tar.gz
 
-bin/cassandra -R
+/opt/cassandra/apache-cassandra-3.11.1/bin/cassandra -R
