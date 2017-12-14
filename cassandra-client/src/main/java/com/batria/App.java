@@ -23,10 +23,10 @@ public class App
 	Connection conn = null;
 	Session session = null;
 	int numberOfRowsPerThread = 200000;
-	int numberOfThreads = 3;
+	int numberOfThreads = 1;
       try{
-        conn = new Connection();
-	session = conn.getSession();
+  //      conn = new Connection();
+//	session = conn.getSession();
 
 	for(int threadCount = 0; threadCount < numberOfThreads; threadCount++)
 	{
@@ -53,7 +53,7 @@ public class App
       }
       finally
       {
-	      conn.close();
+	    //  conn.close();
       }
     }
 }

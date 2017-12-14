@@ -18,6 +18,7 @@ public class Connection
 			cluster = Cluster.builder().addContactPoint("127.0.0.1").withPort(9042).build();
 			session = cluster.connect();
 			System.out.println("getSession method is called");
+			session.execute("select * from test.orders");
 		}									
 		return session;
 	}

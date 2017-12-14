@@ -1,8 +1,9 @@
 
 package com.batria;
 import com.batria.Order_line_items;
+import java.util.*;
 
-public class MyPojo
+public class Order
 {
     private String delivery_notes;
 
@@ -18,7 +19,7 @@ public class MyPojo
 
     private String order_id;
 
-    private Order_line_items[] order_line_items;
+    private List<Order_line_items> order_line_items;
 
     public String getDelivery_notes ()
     {
@@ -90,12 +91,12 @@ public class MyPojo
         this.order_id = order_id;
     }
 
-    public Order_line_items[] getOrder_line_items ()
+    public List<Order_line_items> getOrder_line_items ()
     {
         return order_line_items;
     }
 
-    public void setOrder_line_items (Order_line_items[] order_line_items)
+    public void setOrder_line_items (List<Order_line_items> order_line_items)
     {
         this.order_line_items = order_line_items;
     }
