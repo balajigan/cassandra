@@ -24,7 +24,7 @@ public class PopulateData implements Runnable
 	public void run()
 	{
 		try{
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
 		}
 		catch(Exception ex)
 		{
@@ -42,7 +42,7 @@ public class PopulateData implements Runnable
 				GenerateOrder generateOrder = new GenerateOrder();
 				String jsonOrderString = generateOrder.getOrderJsonString(initialValue);
 				session.execute("INSERT INTO test.orders json " + "'"+jsonOrderString + "'");
-				System.out.println(jsonOrderString);	
+			//	System.out.println(jsonOrderString);	
 			}
 			catch(Exception ex)
 			{

@@ -11,39 +11,61 @@ import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 
 import com.batria.PopulateData;
+
+//import org.apache.logging.log4j.LogManager;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 /**
  * Hello world!
  *
  */
 public class App 
 {
+    private static Logger logger = Logger.getLogger("App");
+
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
+//	logger.error("Initial logging");
+
+	PatternLayout layout = new PatternLayout();
+	String conversionPattern = "%-7p %d [%t] %c %x - %m%n";
+	layout.setConversionPattern(conversionPattern);
+
+	        // creates console appender
+	ConsoleAppender consoleAppender = new ConsoleAppender();
+	consoleAppender.setLayout(layout);
+        consoleAppender.activateOptions();
+	
+	FileAppender fileAppender = new FileAppender();
+	fileAppender.setFile("client.log");
+	fileAppender.setLayout(layout);
+	fileAppender.activateOptions();
+
+	Logger rootLogger = Logger.getRootLogger();
+	rootLogger.setLevel(Level.INFO);
+	rootLogger.addAppender(consoleAppender);
+	rootLogger.addAppender(fileAppender);
+	logger.info("For testing the logger");
+
 	Connection conn = null;
 	Session session = null;
-	int numberOfRowsPerThread = 200000;
+	int numberOfRowsPerThread = 2; //00000;
 	int numberOfThreads = 1;
       try{
-  //      conn = new Connection();
-//	session = conn.getSession();
+        conn = new Connection();
+	session = conn.getSession();
 
 	for(int threadCount = 0; threadCount < numberOfThreads; threadCount++)
 	{
 		String threadName = "Thread"+Integer.toString(threadCount);
-		Thread thread1 = new Thread(new PopulateData(numberOfRowsPerThread*threadCount ,5), threadName);
+		Thread thread1 = new Thread(new PopulateData(numberOfRowsPerThread*threadCount ,numberOfRowsPerThread), threadName);
 		thread1.start();
 	}
 
-//	JSONObject jsonObj = new JSONObject();
-//        jsonObj.put("ordr_id","1234");
-//	jsonObj.put("mrkt", "test_marker$$$$$$$$$$$$$$$$$$$$$$");
-//	session.execute("INSERT INTO test.orders JSON " +  "'" + jsonObj.toString() + "'");
-//	ResultSet rs = session.execute("SELECT JSON * FROM test.orders");
-//	Row row = rs.one();
-//	String jsonString = row.getString(0);
-
-//	System.out.println(jsonString);
 	System.out.println("Exit from main");
        }
       catch(Exception ex)
