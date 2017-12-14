@@ -12,7 +12,6 @@ import com.datastax.driver.core.Row;
 
 import com.batria.PopulateData;
 
-//import org.apache.logging.log4j.LogManager;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
@@ -29,7 +28,6 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-//	logger.error("Initial logging");
 
 	PatternLayout layout = new PatternLayout();
 	String conversionPattern = "%-7p %d [%t] %c %x - %m%n";
@@ -47,7 +45,7 @@ public class App
 
 	Logger rootLogger = Logger.getRootLogger();
 	rootLogger.setLevel(Level.INFO);
-	rootLogger.addAppender(consoleAppender);
+//	rootLogger.addAppender(consoleAppender);
 	rootLogger.addAppender(fileAppender);
 	logger.info("For testing the logger");
 

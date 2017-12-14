@@ -1,4 +1,4 @@
 
 cassandra-client/target/
 cassandra-client/dependency-reduced-pom.xml
-
+cassandra-client/client.log
