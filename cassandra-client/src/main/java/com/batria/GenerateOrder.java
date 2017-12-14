@@ -4,9 +4,11 @@ import com.batria.Order;
 import com.batria.Order_line_items;
 import java.util.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 
 public class GenerateOrder
 {
+	private static Logger logger = Logger.getLogger(GenerateOrder.class);
 	public GenerateOrder()
 	{
 	}
@@ -41,6 +43,7 @@ public class GenerateOrder
 		}
 		catch(Exception ex)
 		{
+			logger.error("Exception while converting JSON to string");
 			ex.printStackTrace();
 		}
 		return jsonInString;

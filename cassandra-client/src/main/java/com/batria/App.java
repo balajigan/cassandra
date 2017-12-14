@@ -27,13 +27,19 @@ public class App
 
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-
+        System.out.println( "Application Started ... " );
+        
+	Connection conn = null;
+	Session session = null;
+	int numberOfRowsPerThread = 10; //00000;
+	int numberOfThreads = 10;
+	int initialOrderId = 5000000;
+        String cassandraIpAddress = "127.0.0.1";
+	// Log4j configuration
 	PatternLayout layout = new PatternLayout();
 	String conversionPattern = "%-7p %d [%t] %c %x - %m%n";
 	layout.setConversionPattern(conversionPattern);
 
-	        // creates console appender
 	ConsoleAppender consoleAppender = new ConsoleAppender();
 	consoleAppender.setLayout(layout);
         consoleAppender.activateOptions();
@@ -47,28 +53,27 @@ public class App
 	rootLogger.setLevel(Level.INFO);
 //	rootLogger.addAppender(consoleAppender);
 	rootLogger.addAppender(fileAppender);
-	logger.info("For testing the logger");
+	logger.info("@@@@@@@@@@@@@@@@@  Application Started @@@@@@@@@@@@@@@@@@@");
 
-	Connection conn = null;
-	Session session = null;
-	int numberOfRowsPerThread = 2; //00000;
-	int numberOfThreads = 1;
       try{
-        conn = new Connection();
+        conn = new Connection(cassandraIpAddress);
 	session = conn.getSession();
 
 	for(int threadCount = 0; threadCount < numberOfThreads; threadCount++)
 	{
 		String threadName = "Thread"+Integer.toString(threadCount);
-		Thread thread1 = new Thread(new PopulateData(numberOfRowsPerThread*threadCount ,numberOfRowsPerThread), threadName);
+		int startOrderId = initialOrderId + (numberOfRowsPerThread*threadCount);
+		Thread thread1 = new Thread(new PopulateData(startOrderId ,numberOfRowsPerThread), threadName);
 		thread1.start();
 	}
 
-	System.out.println("Exit from main");
+	//System.out.println("Exit from main");
+	logger.info("Exit from main");
        }
       catch(Exception ex)
       {
-	      System.out.println("Exception !!!");
+	      //System.out.println("Exception !!!");
+	      logger.error("Exception in Application");
 	      ex.printStackTrace();
       }
       finally

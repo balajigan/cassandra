@@ -6,9 +6,11 @@ import java.lang.Thread;
 import java.lang.Exception;
 import com.batria.Connection;
 import com.datastax.driver.core.Session;
+import org.apache.log4j.Logger;
 
 public class PopulateData implements Runnable
 {
+	private static Logger logger = Logger.getLogger(PopulateData.class);
 	int initialValue=0;
 	int count=0;
 	public PopulateData()
@@ -35,12 +37,13 @@ public class PopulateData implements Runnable
 		for(int loopCount = 0; loopCount < count ; loopCount++)
 		{
 			initialValue = initialValue+1;
-			System.out.println("Current Value = " + initialValue);
+			//System.out.println("Current Value = " + initialValue);
 			try
 			{
 				//Thread.sleep(1000);
 				GenerateOrder generateOrder = new GenerateOrder();
 				String jsonOrderString = generateOrder.getOrderJsonString(initialValue);
+				logger.info("orderId = "+Integer.toString(initialValue));				
 				session.execute("INSERT INTO test.orders json " + "'"+jsonOrderString + "'");
 			//	System.out.println(jsonOrderString);	
 			}
@@ -50,5 +53,8 @@ public class PopulateData implements Runnable
 			}
 
 		}
+		String threadName = Thread.currentThread().getName();
+		logger.info("Thread : " + threadName + " finished the execution");
+		System.out.println("Thread : " + threadName + " finished the execution");
 	}
 }
