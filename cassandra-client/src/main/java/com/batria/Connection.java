@@ -4,6 +4,10 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
 import org.apache.log4j.Logger;
 
+import com.datastax.driver.core.ConsistencyLevel; 
+import com.datastax.driver.core.QueryOptions; 
+
+
 public class Connection
 {
         private static Logger logger = Logger.getLogger("Connection");	
@@ -23,7 +27,11 @@ public class Connection
 		{
 			try
 			{
-			cluster = Cluster.builder().addContactPoint(ipAddress).withPort(9042).build();
+			//cluster = Cluster.builder().addContactPoint(ipAddress).withPort(9042).build();
+			QueryOptions qo = new QueryOptions();
+			qo.setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM);
+			cluster= Cluster.builder().addContactPoint(ipAddress).withPort(9042).withQueryOptions(qo).build();
+
 			session = cluster.connect();
 			//System.out.println("getSession method is called");
 			logger.info("getSession method is called");

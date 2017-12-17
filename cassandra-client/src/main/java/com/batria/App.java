@@ -31,7 +31,7 @@ public class App
         
 	Connection conn = null;
 	Session session = null;
-	int numberOfRowsPerThread = 10000; //00000;
+	int numberOfRowsPerThread = 100; //00000;
 	int numberOfThreads = 20;
 	int initialOrderId = 1000;
         String cassandraIpAddress = "127.0.0.1";
