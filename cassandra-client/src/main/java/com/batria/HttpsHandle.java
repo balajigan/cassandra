@@ -23,12 +23,13 @@ public class HttpsHandle
 
 	}
 
-        public void start()
+        public void uploadFile(String fileName)
 	{
                 String httpUrl = "http://localhost:8080/hazelcast/upload";
 	        String httpsUrl = "https://TBD/hazelcast/upload";	
+		System.out.println("File Name : " + fileName); 
 		// the file we want to upload
-		File inFile = new File("table1_1.csv");
+		File inFile = new File(fileName);
 		FileInputStream fis = null;
 		try {
 			fis = new FileInputStream(inFile);

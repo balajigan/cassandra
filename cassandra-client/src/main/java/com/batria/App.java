@@ -29,7 +29,7 @@ public class App
     {
         System.out.println( "Application Started ... " );
          HttpsHandle httpsHandle = new HttpsHandle();
-	 httpsHandle.start();
+	 httpsHandle.uploadFile(args[0]);
 
     }
     public static void main2( String[] args )
