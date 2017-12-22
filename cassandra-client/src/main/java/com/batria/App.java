@@ -25,7 +25,14 @@ public class App
 {
     private static Logger logger = Logger.getLogger("App");
 
-    public static void main( String[] args )
+    public static void main( String[] args)
+    {
+        System.out.println( "Application Started ... " );
+         HttpsHandle httpsHandle = new HttpsHandle();
+	 httpsHandle.start();
+
+    }
+    public static void main2( String[] args )
     {
         System.out.println( "Application Started ... " );
         
