@@ -25,7 +25,8 @@ public class HttpsHandle
 
         public void start()
 	{
-
+                String httpUrl = "http://localhost:8080/hazelcast/upload";
+	        String httpsUrl = "https://TBD/hazelcast/upload";	
 		// the file we want to upload
 		File inFile = new File("table1_1.csv");
 		FileInputStream fis = null;
@@ -34,7 +35,7 @@ public class HttpsHandle
 			DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
 			
 			// server back-end URL
-			HttpPost httppost = new HttpPost("http://localhost:8080/hazelcast/upload");
+			HttpPost httppost = new HttpPost(httpsUrl);
 			MultipartEntity entity = new MultipartEntity();
 			// set the file input stream and file name as arguments
 			entity.addPart("file", new InputStreamBody(fis, inFile.getName()));
