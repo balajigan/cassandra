@@ -38,9 +38,9 @@ public class App
         
 	Connection conn = null;
 	Session session = null;
-	int numberOfRowsPerThread = 100000; //00000;
+	int numberOfRowsPerThread = 400000; //00000;
 	int numberOfThreads = 20;
-	int initialOrderId = 1;
+	int initialOrderId = 8000000;
         String cassandraIpAddress = "10.128.0.3";
 	// Log4j configuration
 	PatternLayout layout = new PatternLayout();
