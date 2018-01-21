@@ -13,7 +13,7 @@ public class Connection
         private static Logger logger = Logger.getLogger("Connection");	
 	public static Cluster cluster;
 	public static Session session;
-	private String ipAddress = "127.0.0.1";
+	private String ipAddress = "10.128.0.3";
 	public Connection()
 	{
 	}

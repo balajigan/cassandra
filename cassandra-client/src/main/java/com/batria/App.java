@@ -25,23 +25,23 @@ public class App
 {
     private static Logger logger = Logger.getLogger("App");
 
-    public static void main( String[] args)
+    public static void main_dummy( String[] args)
     {
         System.out.println( "Application Started ... " );
          HttpsHandle httpsHandle = new HttpsHandle();
 	 httpsHandle.uploadFile(args[0]);
 
     }
-    public static void main2( String[] args )
+    public static void main( String[] args )
     {
         System.out.println( "Application Started ... " );
         
 	Connection conn = null;
 	Session session = null;
-	int numberOfRowsPerThread = 100; //00000;
+	int numberOfRowsPerThread = 100000; //00000;
 	int numberOfThreads = 20;
-	int initialOrderId = 1000;
-        String cassandraIpAddress = "127.0.0.1";
+	int initialOrderId = 1;
+        String cassandraIpAddress = "10.128.0.3";
 	// Log4j configuration
 	PatternLayout layout = new PatternLayout();
 	String conversionPattern = "%-7p %d [%t] %c %x - %m%n";
