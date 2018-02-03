@@ -40,8 +40,8 @@ public class App
 	Session session = null;
 	int numberOfRowsPerThread = 400000; //00000;
 	int numberOfThreads = 20;
-	int initialOrderId = 8000000;
-        String cassandraIpAddress = "10.128.0.3";
+	int initialOrderId = 1;
+        String cassandraIpAddress = "10.1.1.16";
 	// Log4j configuration
 	PatternLayout layout = new PatternLayout();
 	String conversionPattern = "%-7p %d [%t] %c %x - %m%n";
