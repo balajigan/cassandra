@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS test.orders (
     order_taken_by text
 )WITH compaction= { 'class': 'MemoryOnlyStrategy' }
      AND compression = {'sstable_compression' : ''}
+     AND memtable_flush_period_in_ms = 300000
      AND caching = {'keys':'NONE', 'rows_per_partition':'NONE'};
 
 
