@@ -1,4 +1,7 @@
+
 CREATE KEYSPACE IF NOT EXISTS test WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'};
+CREATE KEYSPACE IF NOT EXISTS test WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'Cassandra' : 3 };
+
 CREATE TYPE IF NOT EXISTS test.order_line_items (
     product_id text,
     order_qty int,
